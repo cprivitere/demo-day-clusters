@@ -85,7 +85,7 @@ metadata:
   namespace: default
 spec:
   clusterName: first-cluster
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       cluster.x-k8s.io/cluster-name: first-cluster
