@@ -85,7 +85,7 @@ metadata:
   namespace: default
 spec:
   clusterName: first-cluster
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       cluster.x-k8s.io/cluster-name: first-cluster
@@ -151,7 +151,7 @@ spec:
       if [ -f "/run/kubeadm/kubeadm.yaml" ]; then
         export KUBECONFIG=/etc/kubernetes/admin.conf
         export CPEM_YAML=https://github.com/equinix/cloud-provider-equinix-metal/releases/download/v3.7.0/deployment.yaml
-        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "469ccc1d-d5bd-4acf-86aa-fdf8b9aebced", "eipTag": "cluster-api-provider-packet:cluster-id:first-cluster", "eipHealthCheckUseHostIP": true}'''
+        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "60252911-33d3-4981-9024-7dbdf1191d43", "eipTag": "cluster-api-provider-packet:cluster-id:first-cluster", "eipHealthCheckUseHostIP": true}'''
         kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}" || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}") || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}")
         kubectl apply -f ${CPEM_YAML} || (sleep 1 && kubectl apply -f ${CPEM_YAML}) || (sleep 1 && kubectl apply -f ${CPEM_YAML})
       fi
@@ -216,7 +216,7 @@ metadata:
   namespace: default
 spec:
   metro: da
-  projectID: 469ccc1d-d5bd-4acf-86aa-fdf8b9aebced
+  projectID: 60252911-33d3-4981-9024-7dbdf1191d43
   vipManager: CPEM
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
@@ -231,8 +231,8 @@ spec:
       machineType: m3.small.x86
       os: ubuntu_20_04
       sshKeys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK/q+WS1JFL8mgUgflVEyu6ymbS8nYAB67DYeLIOXJ53
-        cprivitere@demo-day-capp-2024
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHZAfH7rbUfj6mCCIyMHuT2Q6obYZJMVOEDoP7kxbFk4
+        cprivitere@demo-day-2024-capp
       tags: []
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
@@ -247,6 +247,6 @@ spec:
       machineType: m3.small.x86
       os: ubuntu_20_04
       sshKeys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK/q+WS1JFL8mgUgflVEyu6ymbS8nYAB67DYeLIOXJ53
-        cprivitere@demo-day-capp-2024
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHZAfH7rbUfj6mCCIyMHuT2Q6obYZJMVOEDoP7kxbFk4
+        cprivitere@demo-day-2024-capp
       tags: []
