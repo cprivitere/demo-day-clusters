@@ -151,7 +151,7 @@ spec:
       if [ -f "/run/kubeadm/kubeadm.yaml" ]; then
         export KUBECONFIG=/etc/kubernetes/admin.conf
         export CPEM_YAML=https://github.com/equinix/cloud-provider-equinix-metal/releases/download/v3.7.0/deployment.yaml
-        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "708eeb5-5ac2-4a3f-97d8-886eb8bf236b", "eipTag": "cluster-api-provider-packet:cluster-id:backup-cluster", "eipHealthCheckUseHostIP": true}'''
+        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "a708eeb5-5ac2-4a3f-97d8-886eb8bf236b", "eipTag": "cluster-api-provider-packet:cluster-id:backup-cluster", "eipHealthCheckUseHostIP": true}'''
         kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}" || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}") || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}")
         kubectl apply -f ${CPEM_YAML} || (sleep 1 && kubectl apply -f ${CPEM_YAML}) || (sleep 1 && kubectl apply -f ${CPEM_YAML})
       fi
@@ -216,7 +216,7 @@ metadata:
   namespace: default
 spec:
   metro: da
-  projectID: 708eeb5-5ac2-4a3f-97d8-886eb8bf236b
+  projectID: a708eeb5-5ac2-4a3f-97d8-886eb8bf236b
   vipManager: CPEM
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
